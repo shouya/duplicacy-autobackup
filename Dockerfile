@@ -50,4 +50,3 @@ ADD *.sh ./
 RUN chmod +x *.sh
 
 VOLUME ["/data"]
-ENTRYPOINT ["/app/entrypoint.sh"]

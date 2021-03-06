@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+cd /data || exit
+exec \
+  s6-setuidgid abc mono /app/entrypoint.sh
