@@ -44,7 +44,7 @@ RUN wget https://github.com/gilbertchen/duplicacy/releases/download/v${DUPLICACY
     chmod +x /usr/bin/duplicacy
 
 COPY root /
-COPY entrypoint.sh duplicacy-autobackup.sh /app
+COPY duplicacy-autobackup.sh /app
 
 
 VOLUME ["/data"]
