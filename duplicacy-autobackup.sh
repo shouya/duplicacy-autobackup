@@ -35,10 +35,11 @@ do_backup() {
   fi
 
   duplicacy backup $DUPLICACY_BACKUP_OPTIONS
+  status="$?"
 
   if [[ -f $POST_BACKUP_SCRIPT ]]; then
     echo "Running post-backup script"
-    sh $POST_BACKUP_SCRIPT
+    sh $POST_BACKUP_SCRIPT backup "$status"
     status=$?
     echo "Post-backup script exited with status $status"
   fi
@@ -48,6 +49,7 @@ do_prune() {
   if [[ ! -z "$DUPLICACY_PRUNE_OPTIONS" ]]; then
     echo "Running prunning"
     duplicacy -log prune $DUPLICACY_PRUNE_OPTIONS
+    sh $POST_BACKUP_SCRIPT prune "$?"
   fi
 }
 
@@ -74,9 +76,9 @@ if [[ "$1" == "init" ]]; then
     echo 'This folder has already been initialized with duplicacy. Not initializing again'
   fi
 elif [[ "$1" == "backup" ]]; then
-  do_backup 
+  do_backup
 elif [[ "$1" == "prune" ]]; then
   do_prune
-else 
+else
   echo "Unknown command: $1" >&2
 fi
