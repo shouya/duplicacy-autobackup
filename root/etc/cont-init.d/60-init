@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+s6-setuidgid abc /app/duplicacy-autobackup.sh init
+
+# two spellings for retro-compatibility
+if [[ "$BACKUP_IMMEDIATLY" == "yes" ]] || [[ "$BACKUP_IMMEDIATELY" == "yes" ]]; then
+    echo "Running a backup right now"
+    s6-setuidgid abc /app/duplicacy-autobackup.sh backup
+fi

@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+echo "$BACKUP_SCHEDULE /app/duplicacy-autobackup.sh backup" > /etc/crontabs/abc
+echo "$PRUNE_SCHEDULE /app/duplicacy-autobackup.sh prune" >> /etc/crontabs/abc
