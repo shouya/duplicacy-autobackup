@@ -2,3 +2,4 @@
 
 chown abc:abc /data
 chown abc:abc /data/*
+chown abc:abc /data/.*
