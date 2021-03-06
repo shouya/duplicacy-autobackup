@@ -1,4 +1,5 @@
-FROM alpine:3.7
+FROM ghcr.io/linuxserver/baseimage-alpine:3.13
+
 MAINTAINER Christophe Tafani-Dereeper <christophe@tafani-dereeper.me>
 
 #--
