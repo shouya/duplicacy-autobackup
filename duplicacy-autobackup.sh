@@ -39,7 +39,7 @@ do_backup() {
 
   if [[ -f $POST_BACKUP_SCRIPT ]]; then
     echo "Running post-backup script"
-    sh $POST_BACKUP_SCRIPT backup "$status"
+    sh $POST_BACKUP_SCRIPT "$status"
     status=$?
     echo "Post-backup script exited with status $status"
   fi
@@ -49,7 +49,6 @@ do_prune() {
   if [[ ! -z "$DUPLICACY_PRUNE_OPTIONS" ]]; then
     echo "Running prunning"
     duplicacy -log prune $DUPLICACY_PRUNE_OPTIONS
-    sh $POST_BACKUP_SCRIPT prune "$?"
   fi
 }
 
