@@ -1,5 +1,4 @@
 #!/usr/bin/with-contenv bash
 
 chown abc:abc /data
-chown abc:abc /data/*
-chown abc:abc /data/.*
+chown -f -R abc:abc /data/.duplicacy
