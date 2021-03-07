@@ -2,7 +2,7 @@
 
 if [[ ! -z "$HC_PING_ID" ]]; then
   echo curl -fsS -m 10 --retry 5 -o /dev/null "https://hc-ping.com/$HC_PING_ID/start" \
-       >> /scripts/pre-backup.sh
+       > /scripts/pre-backup.sh
   echo curl -fsS -m 10 --retry 5 --data-binary @/tmp/backup.log "https://hc-ping.com/$HEALTHCHECK_IO_ID/\$1" \
-       >> /scripts/post-backup.sh
+       > /scripts/post-backup.sh
 fi
